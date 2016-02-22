@@ -16,6 +16,8 @@
 function Main()
     Global_Variables
     
+    Ready_System();
+    
     Sensor_Data = zeros(1,4);
     
     while(1)
