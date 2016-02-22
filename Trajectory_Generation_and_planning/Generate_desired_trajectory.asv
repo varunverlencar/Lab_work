@@ -1,0 +1,32 @@
+%%*************************************************************************
+%   Desired_traj    = Generate_desired_trajectory(i)
+%  - Generate the desired values of the trajectory
+%   
+% 
+% 
+% 
+% 
+%**************************************************************************
+
+ 
+
+
+function Desired_traj    = Generate_desired_trajectory(i)
+
+    t = i*Time_period; % Time period for which the calculations are to be done
+    
+%%********************************************************************
+%     TODO: remove thi
+%     
+%     
+%     
+%     
+% *********************************************************************    
+    Desired_traj(1) = des_ang;     
+    Desired_traj(2) = des_length;  
+    Desired_traj(3) = des_pressure ; 
+    Desired_traj(4) = des_flow;     
+
+    
+
+end
