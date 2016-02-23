@@ -7,12 +7,14 @@
 % 
 % *************************************************************************
 
-function [ang,length,pressure,flow] = Data_acquire()
+function [ang,length1,length2,pressure1,pressure2] = Data_acquire()
 
     ang =       Get_angle();
-    length =    Get_length();
-    pressure =  Get_pressure();
-    flow =      Get_flow();
+    length1 =   Get_length(1);
+    length2 =   Get_length(2);
+    pressure1 = Get_pressure(1);
+    pressure2 = Get_pressure(2);
+    %flow =      Get_flow();
     
     fprintf('data read \n \r');
 
