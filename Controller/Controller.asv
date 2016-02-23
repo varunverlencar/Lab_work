@@ -73,7 +73,7 @@ function Arduino_Outputs = Controller(Cost_Outputs,Sensor_Data)
         v3=0;
         v4=0;
     else
-    % Can come here for erroneous reading . In this case shutdown everything and stop it in its current position    
+    % Can come here for erroneous reading . In this case shutdown everything and stop it in its c    
         s1=0;
         s2=0;
         s3=0;
@@ -82,12 +82,10 @@ function Arduino_Outputs = Controller(Cost_Outputs,Sensor_Data)
         v2=0;
         v3=0;
         v4=0;
-        c1=1;
-        c2=1;
 
     end
 
-    Arduino_Outputs = [c1,c2,s1,s2,s3,s4,v1,v2,v3,v4];
+
 
 
 end
