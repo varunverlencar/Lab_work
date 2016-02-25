@@ -14,7 +14,7 @@
 % Global_Variables
 
 function Main()
-    Global_Variables
+%      Global_Variables
     
     i=0;
  
@@ -25,15 +25,17 @@ function Main()
     Sensor_Data  = zeros(1,5);
     Desired_traj = zeros(1,5);
     Cost_Outputs = zeros(1,5);
+    Arduino_Outputs =[1,0,0,1,0,1,30,45,50,20];
     
     while(1)
-        Sensor_Data     = Data_acquire();
+%         Sensor_Data     = Data_acquire();
 %         Desired_traj    = Generate_desired_trajectory(i)
 %         Cost_Outputs    = Calculate_cost(Desired_trajectory,Sensor_Data); %Not implemented yet
 %         Arduino_Outputs = Controller(Cost_Outputs,Sensor_Data); % Not implmented yet
-%         ack             = Send_to_arduino(Arduino_Outputs);% Not implemented yet
+        ack             = Send_to_arduino(Arduino_Outputs);% Not implemented yet
         i=i+1;
-%       Pause_till_next_cycle(i); % implemented
+%        Pause_till_next_cycle(i); % implemented
+%          pause(0.02);
     end
 
 end

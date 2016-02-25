@@ -10,9 +10,12 @@
 
 
 
-% s = serial('COM7');
-% set(s,'BaudRate',115200);
-% fopen(s);
+s = serial('COM7','DataBits',8,'Parity','none','StopBits',1);
+set(s,'BaudRate',115200);
+set(s,'Tag','sweet_serial_of_mine')
+set(s,'Timeout',0.001);
+%  s.ReadAsyncMode = 'manual';
+fopen(s);
 
 
 global Time_period;

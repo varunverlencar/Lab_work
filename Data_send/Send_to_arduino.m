@@ -16,6 +16,6 @@ function ack = Send_to_arduino(Arduino_Outputs)
     
 
     Data_send(c1,c2,s1,s2,s3,s4,v1,v2,v3,v4);
-
+    ack=0;
 
 end
