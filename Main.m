@@ -28,7 +28,7 @@ function Main()
     Arduino_Outputs =[1,0,0,1,0,1,30,45,50,20];
     
     while(1)
-%         Sensor_Data     = Data_acquire();
+         Sensor_Data     = Data_acquire();
 %         Desired_traj    = Generate_desired_trajectory(i)
 %         Cost_Outputs    = Calculate_cost(Desired_trajectory,Sensor_Data); %Not implemented yet
 %         Arduino_Outputs = Controller(Cost_Outputs,Sensor_Data); % Not implmented yet
