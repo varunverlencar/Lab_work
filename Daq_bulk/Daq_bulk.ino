@@ -1,3 +1,8 @@
+/* This code is used for data acquisition from the sensors
+Author: Ananth J
+email: ajonnavittula@wpi.edu
+Copyrights: Popovic Labs*/
+
 String act_str="";
 int ang,len1,len2,pre1,pre2,pump;
 void setup() 
@@ -6,11 +11,11 @@ void setup()
   char AnPins[6]={A0,A1,A2,A3,A4,A5};
    for(int i=0;i<=5;i++)
   {
-    pinMode(AnPins[i],INPUT);
+    pinMode(AnPins[i],INPUT);   // set A0-A5 as inputs
   }
-  pinMode(3,OUTPUT);
+  pinMode(3,OUTPUT);            // set pump pin 3 as output
   while(!Serial);
-  Serial.setTimeout(1);
+  Serial.setTimeout(1);         //to make sure arduino times out if no data is received
 }
 
 void loop() 

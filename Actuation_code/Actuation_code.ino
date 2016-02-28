@@ -1,26 +1,29 @@
-
+/* This code is to actuate the valves, solenoids and Coupler/Decoupler servos
+ *  Author: Ananth J
+email: ajonnavittula@wpi.edu
+Copyrights: Popovic Labs*/
+ */
 #include <Servo.h>
 #include <stdlib.h>
 
 String act_str,d_send="send",d_rece="read"; 
 Servo c1_servo,c2_servo,v1_servo,v2_servo,v3_servo,v4_servo;
-int c_servos[2]={1,2},p1=0,p2=0;
 char d_data[10]={};
 
 void setup() 
 {
   for(int i=2;i<=13;i++)
   {
-    pinMode(i,OUTPUT);
+    pinMode(i,OUTPUT);		// setting pins 2-13 as OUTPUTS
   }
-  pinMode(A0,OUTPUT);
+  pinMode(A0,OUTPUT);		
   pinMode(A1,OUTPUT);
   
   Serial.begin(115200);
   while(!Serial);
-  Serial.setTimeout(1);
+  Serial.setTimeout(1);		//to make sure arduino times out if no data is received
   d_send+='\n';
-  d_rece+='\n';
+  d_rece+='\n';			// to append as per MATLAB's EOC syntax
 
   c1_servo.attach(3);
   c2_servo.attach(4);
@@ -33,7 +36,7 @@ void setup()
 void loop() 
 {
   int valves[4],coupler[2],sols[4];
-  if(Serial.available() > 0)
+  if(Serial.available() > 0)	//check if data is received
     {
       act_str = Serial.readString();
     }
@@ -42,24 +45,24 @@ void loop()
       Serial.readBytes(d_data,10);  
       for(int i=0;i<2;i++)
       {
-        coupler[i]=(int)d_data[i];
+        coupler[i]=(int)d_data[i];	// first two char are for coupler/decoupler
       }
        for(int i=2;i<6;i++)
       {
-        sols[i-2]=(int)d_data[i];
+        sols[i-2]=(int)d_data[i];	// second two char are for solenoids
       }
        for(int i=6;i<10;i++)
       {
-        valves[i-6]=(int)d_data[i];
+        valves[i-6]=(int)d_data[i];	// last two char are for butterfly valves
       }
-      val(valves);
+      val(valves);			// set the respective values of valves, C/D and solenoids
       coup(coupler);
       a_sols(sols);
     }
      act_str="";
 }
 
-void val(int angle[4])
+void val(int angle[4])			// actuate valves
 {
     v1_servo.write(angle[1]);
     v2_servo.write(angle[2]);
@@ -67,7 +70,7 @@ void val(int angle[4])
     v4_servo.write(angle[4]);
 }
 
-void coup(int ser_pos[2])
+void coup(int ser_pos[2])		// actuate C/D
 { 
    if (ser_pos[0]==0)
     {
@@ -87,7 +90,7 @@ void coup(int ser_pos[2])
     }
 }
 
-void a_sols(int state[4])
+void a_sols(int state[4])		// actuate solenoids
 {
     if (state[0]==0)
       {

@@ -1,3 +1,8 @@
+/*This code is replaced by bulk_daq.ino
+Author: Ananth J
+email: ajonnavittula@wpi.edu
+Copyrights: Popovic Labs*/
+
 // #include<
 char inData[20]; // Allocate some space for the string
 char inChar=-1; // Where to store the character read
