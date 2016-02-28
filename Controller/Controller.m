@@ -14,17 +14,22 @@
 
 
 function Arduino_Outputs = Controller(Cost_Outputs,Sensor_Data)
+    % Important Variables%********************************
+    Kp=1;
+    M1_expansion_length = 0.12;
+    c1=0;c2=0;v1=0;v2=0;s1=0;s2=0;s3=0;s4=0;
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%***********************
 
     diff_ang = Cost_Outputs(1);
     %If the max angle diff can be 40 degrees then we normalize it as follow
-    diff_angle_normalized = diff_ang/40;
+    diff_angle_normalized = diff_ang/70;
     
      
 
     %% 
     % Check to see if the diff is > 0
     
-    if (diff_angle_normalized > 0 && abs(diff_angle)>3)
+    if (diff_angle_normalized > 0 && abs(diff_ang)>3)
        % Shorten M2
        c2=1;
        s4 =1;
@@ -38,6 +43,7 @@ function Arduino_Outputs = Controller(Cost_Outputs,Sensor_Data)
        end
        
        % Now expand M1 (@ full speed)until it reaches certain length
+       length1 = Sensor_Data(2);
        if(length1 < M1_expansion_length)
           s1=1;
           v1=90;
@@ -45,7 +51,7 @@ function Arduino_Outputs = Controller(Cost_Outputs,Sensor_Data)
        else
            s1=0;
            v1=0;
-           c1=1;
+           c1=0;
        end
        
        %Close the other values-solenoid pair

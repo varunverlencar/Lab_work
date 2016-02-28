@@ -18,7 +18,7 @@ function Data_send(outputs)
    fwrite(s,outputs);
    
    tic;
-   msg=fread(s,10);
+   % msg=fread(s,10);
    
     
     disp(msg);

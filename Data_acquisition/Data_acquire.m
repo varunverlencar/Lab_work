@@ -18,7 +18,7 @@ function Sensor_Data = Data_acquire()
     
 %     fprintf('data read \n \r');
 
-   s = instrfind('Tag','sweet_serial_of_mine');
+   s = instrfind('Tag','the_other_serial');
 
    fprintf(s,'read');
    
@@ -31,7 +31,7 @@ function Sensor_Data = Data_acquire()
     fprintf('\n');
     flushinput(s);
     
-    Sensor_Data = msg;
+    Sensor_Data = Reassemble_data(msg);
 
 
 
